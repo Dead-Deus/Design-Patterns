@@ -1,13 +1,9 @@
-#include <vector>
-
-#include "WarriorsFactory.hpp"
+#include "Color.hpp"
 
 int main()
 {
-    WarriorsFactory& warriorsFactory = WarriorsFactory::getInstance();
-
-    std::vector<Warrior*> warriors;
-    warriors.push_back(warriorsFactory.createInfantrman());
-    warriors.push_back(warriorsFactory.createArcher());
-    warriors.push_back(warriorsFactory.createHorseman());
+    Color someColor1{1, 2, 3};
+    Color someColor2 = someColor1;
 }
+
+// Prototype included in c++ (copy constructor)

@@ -1,9 +1,7 @@
 project(Prototype)
 
-add_executable(${PROJECT_NAME} Main.cpp
-    Warrior.hpp Warrior.cpp
-    Infantryman.hpp Infantryman.cpp
-    Archer.hpp Archer.cpp
-    Horseman.hpp Horseman.cpp
-    WarriorsFactory.hpp WarriorsFactory.cpp
+add_executable(${PROJECT_NAME} Main.cpp 
+    Prototype/Color.hpp Prototype/Color.cpp 
 )
+
+target_include_directories(${PROJECT_NAME} PRIVATE Prototype)
