@@ -5,9 +5,6 @@ class ResourceHolder
 public:
     static ResourceHolder& getInstance();
 
-    // ...
-
 private:
-    ResourceHolder();
-    ~ResourceHolder();
+    ResourceHolder() = default;
 };
