@@ -4,27 +4,35 @@
 #include "LinuxButton.hpp"
 #include "WindowsButton.hpp"
 
-Button* clientCode(const std::string& buttonType); // factoryMethod
+Button* createButton(const std::string& buttonType);
 
 int main()
 {
-    std::ifstream config("Assets/Config.cfg");
-    std::string   buttonType;
-    config >> buttonType;
+    Button* button1 = createButton("Linux");
+    Button* button2 = createButton("Windows");
 
-    Button* button = clientCode(buttonType);
+    delete button2;
+    delete button1;
 }
 
-Button* clientCode(const std::string& buttonType)
+Button* createButton(const std::string& buttonType) // factoryMethod1
 {
     return buttonType == "Linux" ? dynamic_cast<Button*>(new LinuxButton()) : dynamic_cast<Button*>(new WindowsButton());
 }
+
+/*
+Label* createLabel(const std::string& labelType) // factoryMethod2
+{
+    return buttonType == "Linux" ? dynamic_cast<Button*>(new LinuxLabel()) : dynamic_cast<Button*>(new WindowsLabel());
+}
+*/
 
 // Applicability:
 // You don’t know beforehand the exact types and dependencies of the objects
 
 // Example:
-// Creator (Spawner) [Network -> (type) -> Spawner.spawn(ObjectType type); -> factoryMethod]
+// Creator (Spawner) [Network -> (type) -> Spawner.spawnEnemy(ObjectType type); -> factoryMethod1]
+// Creator (Spawner) [Network -> (type) -> Spawner.spawnFriend(ObjectType type); -> factoryMethod2]
 
 // Pros:                                                                        Cons:
 // [+] You avoid tight coupling between the creator and the concrete products   [-] The code may become more complicated
