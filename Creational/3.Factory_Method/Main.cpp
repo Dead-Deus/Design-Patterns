@@ -5,19 +5,25 @@
 #include "WindowsButton.hpp"
 
 Button* createButton(const std::string& buttonType);
+void    clientCode();
 
 int main()
+{
+    clientCode();
+}
+
+Button* createButton(const std::string& buttonType) // factoryMethod1
+{
+    return buttonType == "Linux" ? dynamic_cast<Button*>(new LinuxButton()) : dynamic_cast<Button*>(new WindowsButton());
+}
+
+void clientCode()
 {
     Button* button1 = createButton("Linux");
     Button* button2 = createButton("Windows");
 
     delete button2;
     delete button1;
-}
-
-Button* createButton(const std::string& buttonType) // factoryMethod1
-{
-    return buttonType == "Linux" ? dynamic_cast<Button*>(new LinuxButton()) : dynamic_cast<Button*>(new WindowsButton());
 }
 
 /*

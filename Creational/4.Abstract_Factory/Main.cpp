@@ -3,27 +3,23 @@
 #include "WindowsGUIFactory.hpp"
 #include "Button.hpp"
 
-// GUI
-Button& createButton(GUIFactory& GUIFactory);
+void clientCode(GUIFactory& GUIFactory);
 
 int main()
 {
     GUIFactory* GUIFactory1 = new LinuxGUIFactory();
-    Button&     button1     = createButton(*GUIFactory1);
-
-    delete &button1;
+    clientCode(*GUIFactory1);
     delete GUIFactory1;
 
     GUIFactory* GUIFactory2 = new WindowsGUIFactory();
-    Button&     button2     = createButton(*GUIFactory2);
-
-    delete &button2;
+    clientCode(*GUIFactory2);
     delete GUIFactory2;
 }
 
-Button& createButton(GUIFactory& GUIFactory)
+void clientCode(GUIFactory& GUIFactory)
 {
-    return GUIFactory.createButton();
+    auto button = GUIFactory.createButton();
+    delete &button;
 }
 
 // Applicability:
