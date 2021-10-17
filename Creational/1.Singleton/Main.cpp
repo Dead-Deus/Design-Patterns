@@ -11,7 +11,7 @@ int main()
 void clientCode()
 {
     ResourceDB& resourceDB = ResourceDB::getInstance();
-    // Resource& resource = ResourceDB::getResource(...);
+    // Resource& resource = resourceDB.getResource(...);
 }
 
 // Applicability:
